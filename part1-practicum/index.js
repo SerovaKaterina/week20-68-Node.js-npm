@@ -216,8 +216,18 @@ document.querySelector('.b-12').addEventListener('click', makeTwelve);
 //Добавьте в функцию makeTwelve блок try/catch
 
 function makeThirteen() {
+	const resultThirteen = document.getElementById('result13');
 	let age = 10;
-	//Ваш код
+	try {
+		if (age < 18) {
+			throw new Error('Доступ запрещен для лиц младше 18 лет');
+		} else {
+			resultThirteen.textContent = 'Доступ разрешен';
+		}
+		}catch(error) {
+			resultThirteen.textContent = 'Ошибка была перехвачена: ' + error.message;
+			console.error('Ошибка была перехвачена:', error.message);
+		}
 }
 
 document.querySelector('.b-13').addEventListener('click', makeThirteen);
@@ -230,11 +240,17 @@ document.querySelector('.b-13').addEventListener('click', makeThirteen);
 //Используйте блок try/catch
 
 function makeFourteen() {
+	const resultFourteen = document.getElementById('result14');
 	let discount = 51;
+	try {
 	if (discount < 0 || discount > 50) {
-		//Ваш код
+		throw new Error('Некорректное значение скидки')
 	}
-	console.log('Замените текст');
+		resultFourteen.textContent = `Ваша скидка: ${discount}%`;
+    }catch(error) {
+		resultFourteen.textContent = 'Ошибка была перехвачена: ' + error.message;
+		console.log('Ошибка была перехвачена:', error.message);
+	};
 }
 
 document.querySelector('.b-14').addEventListener('click', makeFourteen);
@@ -246,9 +262,10 @@ document.querySelector('.b-14').addEventListener('click', makeFourteen);
 function makeFifteen(a, func) {
 	const resultFifteen = document.getElementById('result15');
 	try {
-		//Ваш код
+		func(a);
 	} catch (error) {
-		//Ваш код
+		resultFifteen.textContent ='Ошибка была перехвачена: ' + error.name;
+		console.log('Ошибка была перехвачена:', error.message);
 	}
 }
 
@@ -260,7 +277,12 @@ document.querySelector('.b-15').addEventListener('click', makeFifteen);
 
 function makeSixteen(n, func) {
 	const resultSixteen = document.getElementById('result16');
-	//Ваш код
+	try {
+		func(n);
+	}catch(error) {
+		resultSixteen.textContent ='Ошибка была перехвачена: ' + error.message;
+		console.log('Ошибка была перехвачена:', error.message);
+	}
 }
 
 document.querySelector('.b-16').addEventListener('click', makeSixteen);
@@ -271,7 +293,12 @@ document.querySelector('.b-16').addEventListener('click', makeSixteen);
 
 function makeSeventeen(str, func) {
 	const resultSeventeen = document.getElementById('result17');
-	//Ваш код
+	try {
+		func(str);
+	}catch(error) {
+		resultSeventeen.textContent ='Ошибка была перехвачена: ' + error.message;
+		console.log('Ошибка была перехвачена:', error.message);
+	}
 }
 
 // добавьте слушатель события
@@ -284,17 +311,20 @@ document.querySelector('.b-17').addEventListener('click', makeSeventeen);
 function makeEighteen() {
 	const resultEighteen = document.getElementById('result18');
 	const forWordFinally = document.getElementById('result18a');
-	//Блок try
-	//Некорректная операция деления для примера, может вызвать ошибку
+	let a = 12;
+	let b = 0;
+	try {
+		const result = a / b;
+		resultEighteen.textContent = result;
 	if (true) {
 		throw new Error('Division by zero');
 	}
-	const result = 12 / 0;
-	resultEighteen.textContent = result;
-	//Блок catch (error)
-	console.error(error); //Вывод ошибки в консоль
-	resultEighteen.textContent = '0'; //Вывод '0' при ошибке
-	//Блок finally
+    }catch(error) {
+		resultEighteen.textContent = '0';
+		console.error('Ошибка была перехвачена:', error.message);
+	}finally {
+		forWordFinally.textContent = 'finnaly';
+	}
 }
 
 document.querySelector('.b-18').addEventListener('click', makeEighteen);
@@ -305,14 +335,16 @@ document.querySelector('.b-18').addEventListener('click', makeEighteen);
 
 function makeNineteen() {
 	const resultNineteen = document.getElementById('result19');
-	//Блок try
+	const forFinally19 = document.getElementById('result19a');
+    try {
 	const arr = [1, 2, 3];
 	const sum = arr.reduce((acc, val) => acc + val, 0);
 	resultNineteen.textContent = sum;
-	//Блок catch (error)
-	console.error(error); //Вывод ошибки в консоль
-	//Ваш код
-	//Блок finally
+    }catch(error) {
+		resultNineteen.textContent = 'Ошибка';
+    }finally {
+		forFinally19.textContent = 'finnaly19';
+	}
 }
 
 document.querySelector('.b-19').addEventListener('click', makeNineteen);
@@ -329,7 +361,16 @@ function calculateValue() {
 }
 
 function makeTwenty() {
-	//Ваш код
+	const resultTwenty = document.getElementById('result20');
+	const forFinally20 = document.getElementById('result20a');
+	try {
+    resultTwenty.textContent = calculateValue();
+	}catch(error) {
+		resultTwenty.textContent = 'Ошибка';
+		console.error('Ошибка была перехвачена:', error.message);
+	}finally {
+		forFinally20.textContent = 'finnaly20';
+	}
 }
 
 // добавьте слушатель события
@@ -347,7 +388,16 @@ function fetchData() {
 }
 
 function makeTwentyOne() {
-	//Ваш код
+	const resultTwentyOne = document.getElementById('result21');
+	const forFinally21  = document.getElementById('result21a');
+	try {
+    resultTwentyOne.textContent = fetchData();
+	}catch(error) {
+		resultTwentyOne.textContent = 'Ошибка';
+		console.error('Ошибка была перехвачена:', error.message);
+	}finally {
+		forFinally21.textContent = 'finnaly21';
+	}
 }
 
 // добавьте слушатель события
@@ -360,13 +410,14 @@ const json = '{ некорректный JSON }';
 
 function makeTwentyTwo() {
 	const resultTwentyTwo = document.getElementById('result22');
-	//Блок try
-	let user = JSON.parse(json); //Возникает ошибка
-	console.log(user.name); //Не сработает
-	//Блок catch (e)
+	try {
+	let user = JSON.parse(json);
+	console.log(user.name);
+	}catch(e) {
 	resultTwentyTwo.textContent = 'Извините, в данных ошибка, мы попробуем получить их ещё раз.';
 	console.log(e.name);
 	console.log(e.message);
+    }
 }
 
 document.querySelector('.b-22').addEventListener('click', makeTwentyTwo);
@@ -379,7 +430,14 @@ const jsonTwentyThree = '{ некорректный JSON }';
 
 function makeTwentyThree() {
 	const resultTwentyThree = document.getElementById('result23');
-	//Ваш код
+	try {
+	let user = JSON.parse(json);
+	console.log(user.name);
+	}catch(error) {
+	resultTwentyThree.textContent = 'Извините, в данных ошибка, мы попробуем получить их ещё раз.';
+	console.log(error.name);
+	console.log(error.message);
+    }
 }
 
 // Добавьте слушатель события
@@ -391,14 +449,17 @@ document.querySelector('.b-23').addEventListener('click', makeTwentyThree);
 
 function makeTwentyFour() {
 	const resultTwentyFour = document.getElementById('result24');
-	//Блок try
+	try {
 	let divisor = 0;
 	if (divisor === 0) {
-		//Ваш код
+		throw new Error('некорректная операция');
 	}
 	let result = 24 / divisor;
 	return result;
-	//Блок catch (error)
+	}catch(error) {
+		resultTwentyFour.textContent ='Ошибка была перехвачена: ' + error.message;
+		console.log('Ошибка была перехвачена:', error.message);
+	}
 }
 
 document.querySelector('.b-24').addEventListener('click', makeTwentyFour);
@@ -409,15 +470,17 @@ document.querySelector('.b-24').addEventListener('click', makeTwentyFour);
 
 function makeTwentyFive() {
 	const resultTwentyFive = document.getElementById('result25');
-	//Блок try
+	try {
 	const randomValue = Math.random();
 	if (randomValue <= 0.9) {
 		throw new Error('Искусственная ошибка');
 	}
 	resultTwentyFive.textContent = 'Операция успешно выполнена';
-	//Блок catch (error)
+	}catch(error) {
+		resultTwentyFive.textContent ='Ошибка была перехвачена: ' + error.message;
+		console.log('Ошибка была перехвачена:', error.message);
+	};
 }
-
 document.querySelector('.b-25').addEventListener('click', makeTwentyFive);
 
 //Задание 26
@@ -426,11 +489,14 @@ document.querySelector('.b-25').addEventListener('click', makeTwentyFive);
 
 function makeTwentySix() {
 	const resultTwentySix = document.getElementById('result26');
-	//Блок try
 	setTimeout(() => {
+		try {
 		noSuchVariable; //Попытка обратиться к несуществующей переменной
-	}, 1000);
-	//Блок catch (error)
+	}catch(error) {
+		resultTwentySix.textContent = 'Ошибка была перехвачена: ' + error.message;
+		console.log('Ошибка была перехвачена:', error.message);
+	};
+}, 1000);
 }
 
 document.querySelector('.b-26').addEventListener('click', makeTwentySix);

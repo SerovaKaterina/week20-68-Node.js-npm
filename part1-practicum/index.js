@@ -138,11 +138,12 @@ document.querySelector('.b-8').addEventListener('click', makeEight);
 //Добавьте в код функции makeNine блок try/catch так, чтобы вместо ошибки выводилось цифра 1 в элемент с id "result9"
 
 function makeNine() {
-	//Тут добавляете try
+	try {
 	let a = 22;
 	let c = a + d;
-	//Тут catch
-	//Вывод цифры в элемент
+    }catch {
+		document.getElementById('result9').textContent = '1';
+	}
 }
 
 document.querySelector('.b-9').addEventListener('click', makeNine);
@@ -154,14 +155,18 @@ document.querySelector('.b-9').addEventListener('click', makeNine);
 //В блоке catch выведите сообщение об ошибке на страницу
 
 function makeTen() {
+	const resultTen = document.getElementById('result10');
 	let email = 'example.com';
 	let emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-
+    try {
 	if (!emailPattern.test(email)) {
-		throw 'Некорректный email-адрес';
+		throw new Error('Некорректный email-адрес');
 	}
-
-	document.getElementById('.result7').textContent = 'Email-адрес корректен';
+	resultTen.textContent ='Email-адрес корректен';
+    }catch(error) {
+		resultTen.textContent = 'Ошибка была перехвачена: ' + error.message;
+		console.error('Ошибка была перехвачена:', error.message);
+}
 }
 
 document.querySelector('.b-10').addEventListener('click', makeTen);
@@ -170,12 +175,19 @@ document.querySelector('.b-10').addEventListener('click', makeTen);
 //Допишите проверку телефона пользователя, если длина телефона менее 10 символов бросьте исключение throw new Error с сообщением "Некорректная длина телефонного номера"
 
 function makeEleven() {
-	phoneNumber = '06629820788';
+	const resultEleven = document.getElementById('result11');
+	 let phoneNumber = '091045445828';
+	try {
 	if (!/^\d+$/.test(phoneNumber)) {
 		throw new Error('Телефонный номер должен состоять только из цифр');
+	}else if (phoneNumber.length < 10) {
+		throw new Error('Некорректная длина телефонного номера');
 	}
-	//Ваш код
-	console.log('Телефонный номер корректен');
+	resultEleven.textContent = 'Телефонный номер корректен';
+    }catch(error) {
+		resultEleven.textContent = 'Ошибка была перехвачена: ' + error.message;
+		console.error('Ошибка была перехвачена:', error.message);
+	}
 }
 
 document.querySelector('.b-11').addEventListener('click', makeEleven);
@@ -185,14 +197,19 @@ document.querySelector('.b-11').addEventListener('click', makeEleven);
 //Если возраст меньше 18 лет, необходимо бросить исключение типа Error с сообщением "Доступ запрещен для лиц младше 18 лет". В противном случае, выведите сообщение "Доступ разрешен".
 
 function makeTwelve() {
+	const resultTwelve = document.getElementById('result12');
 	let age = 12;
+	try {
 	if (age < 18) {
-		//Ваш код
+		throw new Error('Доступ запрещен для лиц младше 18 лет');
 	} else {
-		//Ваш код
+		resultTwelve.textContent = 'Доступ разрешен';
+	}
+    }catch(error) {
+		resultTwelve.textContent = 'Ошибка была перехвачена: ' + error.message;
+		console.error('Ошибка была перехвачена:', error.message);
 	}
 }
-
 document.querySelector('.b-12').addEventListener('click', makeTwelve);
 
 //Задание 13

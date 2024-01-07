@@ -517,18 +517,17 @@ function simulateAsyncOperation() {
 	});
 }
 
-//Добавить название функции и ключевое слово async
-//Подумайте, в каком месте нужно добавить await
-// resultTwentySeven.textContent = 'Ожидание...';
-// try {
-// 	const result = simulateAsyncOperation();
-// 	resultTwentySeven.textContent = 'Результат: ' + result;
-// } catch (error) {
-// 	resultTwentySeven.textContent = 'Произошла ошибка: ' + error.message;
-// 	console.error(error.name);
-// }
+async function makeTwentySeven() {
+	try {
+		const result = await simulateAsyncOperation();
+		resultTwentySeven.textContent = 'Результат: ' + result;
+		} catch (error) {
+		resultTwentySeven.textContent = 'Произошла ошибка: ' + error.message;
+		console.log('Ошибка была перехвачена:', error.name);
+		}
+}
 
-// document.querySelector('.b-27').addEventListener('click', makeTwentySeven);
+document.querySelector('.b-27').addEventListener('click', makeTwentySeven);
 
 //Задание 28
 //Создайте функцию makeTwentyEight, которая содержит код с использованием Promise.reject и setTimeout,
@@ -549,7 +548,7 @@ function makeTwentyEight() {
 
 		//Код с setTimeout
 		setTimeout(() => {
-			throw Error('ошибка');
+			throw new Error('ошибка');
 		}, 1000);
 	} catch (e) {
 		resultTwentyEight.textContent = 'Ошибка на верхнем уровне: ' + e;
@@ -565,12 +564,13 @@ document.querySelector('.b-28').addEventListener('click', makeTwentyEight);
 
 const resultTwentyNine = document.getElementById('result29');
 
-function handlePromise() {
-	//Блок try
-	Promise.reject('это точно ошибка');
-	//Блок catch (e)
+async function handlePromise() {
+	try {
+	await Promise.reject('это точно ошибка');
+    }catch(e) {
 	resultTwentyNine.textContent = 'Ошибка перехвачена: ' + e;
 	console.log(e); //err
+};
 }
 
 function makeTwentyNine() {
@@ -586,15 +586,16 @@ document.querySelector('.b-29').addEventListener('click', makeTwentyNine);
 function makeThirty() {
 	const resultTwentyThirty = document.getElementById('result30');
 	resultTwentyThirty.textContent = string;
-	return;
+	
 	try {
 		while (true) {
-			// Бесконечный цикл
+			return;
 		}
 	} catch (error) {
 		resultTwentyThirty.textContent = 'Произошла ошибка: ' + error.message;
 		console.error('Произошла ошибка:', error.message);
 	}
+	
 }
 
 document.querySelector('.b-30').addEventListener('click', makeThirty);

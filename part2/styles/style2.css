@@ -1,0 +1,17 @@
+body {
+  background-image: url(../assets/images/16.84303.jpg);
+}
+.main_container {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding-left: 30%;
+  padding-top: 5%;
+}
+h1 {
+  color: azure;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+}

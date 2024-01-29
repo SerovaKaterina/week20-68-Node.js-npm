@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Звёздные войны</title>
+    <link rel="stylesheet" href="./styles/normalize.css" />
+    <link rel="stylesheet" href="./styles/skeleton.css" />
+    <link rel="stylesheet" href="./styles/style2.css" />
+  </head>
+  <body>
+    <main class="main_container">
+      <h1>Кого или что будем искать?</h1>
+      <div class="container">
+        <div class="select_container">
+          <select name="option" id="select">
+            <option value="" disabled selected>-выбрать-</option>
+            <option value="peoples">Людей</option>
+            <option value="planets">Планеты</option>
+            <option value="films">Фильмы</option>
+          </select>
+        </div>
+        <div class="input_container">
+          <input
+            type="number"
+            id="number"
+            step="1"
+            placeholder="выбрать"
+            min="1" />
+        </div>
+        <div class="btn_container">
+          <button id="btn">Вперёд!</button>
+        </div>
+      </div>
+      <div class="loader_wrapper"></div>
+      <div class="result_container">
+        <div class="info_result"></div>
+        <div class="error_result"></div>
+      </div>
+    </main>
+    <script src="index2.js"></script>
+  </body>
+</html>

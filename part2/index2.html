@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="./styles/normalize.css" />
     <link rel="stylesheet" href="./styles/skeleton.css" />
     <link rel="stylesheet" href="./styles/style2.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet" />
   </head>
   <body>
     <main class="main_container">
@@ -15,7 +20,7 @@
         <div class="select_container">
           <select name="option" id="select">
             <option value="" disabled selected>-выбрать-</option>
-            <option value="peoples">Людей</option>
+            <option value="people">Людей</option>
             <option value="planets">Планеты</option>
             <option value="films">Фильмы</option>
           </select>
@@ -32,10 +37,12 @@
           <button id="btn">Вперёд!</button>
         </div>
       </div>
-      <div class="loader_wrapper"></div>
-      <div class="result_container">
-        <div class="info_result"></div>
-        <div class="error_result"></div>
+      <div class="info">
+        <div class="loader_wrapper"></div>
+        <div class="result_container">
+          <div class="info_result"></div>
+          <div class="error_result"></div>
+        </div>
       </div>
     </main>
     <script src="index2.js"></script>

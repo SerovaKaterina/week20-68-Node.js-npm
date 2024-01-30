@@ -8,10 +8,51 @@ body {
   padding-top: 5%;
 }
 h1 {
-  color: azure;
+  color: rgb(160, 220, 246);
+  font-family: "Pacifico";
 }
 .container {
   display: flex;
   flex-direction: row;
-  margin: 0;
+  margin-left: 0;
+}
+.info {
+  display: flex;
+  flex-direction: row;
+}
+.info_result,
+.error_result {
+  color: rgb(160, 220, 246);
+  font-family: "Pacifico";
+  font-size: xx-large;
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+#btn {
+  background-color: rgb(8, 8, 31);
+  color: rgb(160, 220, 246);
+  font-family: "Pacifico";
+}
+#select,
+#number {
+  color: rgb(8, 8, 31);
+  font-family: "Pacifico";
+  font-size: 16px;
 }
